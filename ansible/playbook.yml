@@ -1,0 +1,23 @@
+- name: Deploy Node.js App on EC2 using Docker
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+    - name: Copy full project to EC2 (excluding sensitive files)
+      synchronize:
+        src: "/mnt/c/Users/Rahul Singh/Desktop/DevOps_Propject/"
+        dest: /home/ubuntu/app
+        rsync_opts:
+          - "--exclude=ansible/"
+          - "--exclude=new.pem"
+
+
+    - name: Build Docker image on EC2
+      command: docker build -t myapp /home/ubuntu/app
+
+    - name: Run Docker container
+      command: docker run -d -p 80:3000 myapp
