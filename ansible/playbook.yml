@@ -9,7 +9,7 @@
         update_cache: yes
     - name: Copy full project to EC2 (excluding sensitive files)
       synchronize:
-        src: "/mnt/c/Users/Rahul Singh/Desktop/DevOps_Propject/"
+        src: "/var/lib/jenkins/workspace/Demo-web-app/"
         dest: /home/ubuntu/app
         rsync_opts:
           - "--exclude=ansible/"
