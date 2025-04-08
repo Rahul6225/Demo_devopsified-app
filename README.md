@@ -1,4 +1,4 @@
-# DevOps Demo Project – AppSquadz
+# DevOps Demo Project 
 
 This is a simple Node.js app containerized using Docker and deployed on an AWS EC2 instance using Ansible.
 
